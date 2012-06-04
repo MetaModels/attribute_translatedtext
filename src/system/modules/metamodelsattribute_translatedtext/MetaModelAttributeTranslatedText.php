@@ -28,7 +28,7 @@ if (!defined('TL_ROOT'))
 class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 {
 
-	public static function getAttributeSettingNames()
+	public function getAttributeSettingNames()
 	{
 		return array_merge(parent::getAttributeSettingNames(), array(
 			'parentCheckbox',
@@ -46,7 +46,6 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 			'editGroups'
 		));
 	}
-//tl_metamodel_translatedtext
 
 	public function getFieldDefinition()
 	{
@@ -94,8 +93,6 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 		$arrResult['html'] = $arrRowData[$this->getColName()]['value'];
 		return $arrResult;
 	}
-
-
 
 	public function getDataFor($arrIds)
 	{
