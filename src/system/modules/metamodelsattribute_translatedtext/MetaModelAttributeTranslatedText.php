@@ -87,7 +87,7 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 		return $arrFieldDef;
 	}
 
-	public function parseValue($arrRowData, $strOutputFormat = 'html')
+	public function parseValue($arrRowData, $strOutputFormat = 'html', $objSettings = null)
 	{
 		$arrResult = parent::parseValue($arrRowData, $strOutputFormat);
 		$arrResult['html'] = $arrRowData[$this->getColName()]['value'];
@@ -110,6 +110,32 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 	public function setDataFor($arrValues)
 	{
 		// store to database.
+	}
+        
+        	/**
+	 * {@inheritdoc}
+	 * 
+	 * Fetch filter options from foreign table.
+	 * 
+	 */
+	public function getFilterOptions($arrIds = array())
+	{
+		$objDB = Database::getInstance();
+
+		if ($arrIds)
+		{
+			$strWhereIds = ' AND item_id IN (' . implode(',', $arrIds) . ')';
+		}
+
+		$objValue = $objDB->prepare('SELECT * FROM tl_metamodel_translatedtext WHERE att_id=? AND langcode=? ' . $strWhereIds)
+				->execute($this->get('id'), $this->getMetaModel()->getActiveLanguage());
+
+		$arrReturn = array();
+		while ($objValue->next())
+		{
+			$arrReturn[$objValue->value] = $objValue->value;
+		}
+		return $arrReturn;
 	}
 }
 
