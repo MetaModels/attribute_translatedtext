@@ -19,13 +19,15 @@ if (!defined('TL_ROOT'))
 }
 
 /**
- * This is the MetaModelAttribute class for handling text fields.
- * 
+ * This is the MetaModelAttribute class for handling translated text fields.
+ *
  * @package	   MetaModels
  * @subpackage AttributeText
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
-class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
+class MetaModelAttributeTranslatedText
+extends MetaModelAttributeComplex
+implements IMetaModelAttributeTranslated
 {
 
 	public function getAttributeSettingNames()
@@ -87,18 +89,128 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 		return $arrFieldDef;
 	}
 
-	public function parseValue($arrRowData, $strOutputFormat = 'html')
+	public function parseValue($arrRowData, $strOutputFormat = 'text', $objSettings = null)
 	{
-		$arrResult = parent::parseValue($arrRowData, $strOutputFormat);
+		$arrResult = parent::parseValue($arrRowData, $strOutputFormat, $objSettings);
 		$arrResult['html'] = $arrRowData[$this->getColName()]['value'];
 		return $arrResult;
 	}
 
 	public function getDataFor($arrIds)
 	{
+		$strActiveLanguage = $this->getMetaModel()->getActiveLanguage();
+		$strFallbackLanguage = $this->getMetaModel()->getFallbackLanguage();
+
+		$arrReturn = $this->getTranslatedDataFor($arrIds, $strActiveLanguage);
+
+		// second round, fetch fallback languages if not all items could be resolved.
+		if ((count($arrReturn) < count($arrIds)) && ($strActiveLanguage != $strFallbackLanguage))
+		{
+			$arrFallbackIds = array();
+			foreach ($arrIds as $intId)
+			{
+				if (empty($arrReturn[$intId]))
+				{
+					$arrFallbackIds[] = $intId;
+				}
+			}
+
+			if ($arrFallbackIds)
+			{
+				$arrFallbackData = $this->getTranslatedDataFor($arrFallbackIds, $strFallbackLanguage);
+				// cannot use array_merge here as it would renumber the keys.
+				foreach ($arrFallbackData as $intId => $arrValue)
+				{
+					$arrReturn[$intId] = $arrValue;
+				}
+			}
+		}
+		return $arrReturn;
+	}
+
+	public function setDataFor($arrValues)
+	{
+		foreach ($this->getMetaModel()->getAvailableLanguages() as $strLangCode)
+		{
+			$this->setTranslatedDataFor($arrValues, $strLangCode);
+		}
+	}
+
+	public function unsetDataFor($arrIds)
+	{
+		foreach ($this->getMetaModel()->getAvailableLanguages() as $strLangCode)
+		{
+			$this->unsetValueFor($arrIds, $strLangCode);
+		}
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * Fetch filter options from foreign table.
+	 *
+	 */
+	public function getFilterOptions($arrIds = array())
+	{
+		$objDB = Database::getInstance();
+
+		if ($arrIds)
+		{
+			$strWhereIds = ' AND item_id IN (' . implode(',', $arrIds) . ')';
+		}
+
+		$objValue = $objDB->prepare('SELECT * FROM tl_metamodel_translatedtext WHERE att_id=? AND langcode=? ' . $strWhereIds)
+				->execute($this->get('id'), $this->getMetaModel()->getActiveLanguage());
+
+		$arrReturn = array();
+		while ($objValue->next())
+		{
+			$arrReturn[$objValue->value] = $objValue->value;
+		}
+		return $arrReturn;
+	}
+
+	/////////////////////////////////////////////////////////////////
+	// interface IMetaModelAttributeTranslated
+	/////////////////////////////////////////////////////////////////
+
+	public function setTranslatedDataFor($arrValues, $strLangCode)
+	{
+		$objDB = Database::getInstance();
+		// first off determine those to be updated and those to be inserted.
+		$arrIds = array_keys($arrValues);
+		$arrExisting = array_keys($this->getTranslatedDataFor($arrIds, $strLangCode));
+		$arrNewIds = array_diff($arrIds, $arrExisting);
+
+		// now update...
+		foreach ($arrExisting as $intId)
+		{
+			$objDB->prepare('UPDATE tl_metamodel_translatedlongtext SET value=?, tstamp=? WHERE att_id=? AND langcode=? AND item_id=?')
+				  ->execute($arrValues[$intId], time(), $this->get('id'), $strLangCode, $intId);
+		}
+		// ...and insert
+		foreach ($arrExisting as $intId)
+		{
+			$objDB->prepare('INSERT INTO tl_metamodel_translatedlongtext SET value=? WHERE  att_id=? AND langcode=? AND item_id=?')
+				  ->set(array(
+				  'tstamp' => time(),
+				  'value' => $arrValues[$intId],
+				  'att_id' => $this->get('id'),
+				  'langcode' => $strLangCode,
+				  'item_id' => $intId,
+				  ))
+				  ->execute();
+		}
+	}
+
+	/**
+	 * Get values for the given items in a certain language.
+	 */
+	public function getTranslatedDataFor($arrIds, $strLangCode)
+	{
 		$objDB = Database::getInstance();
 		$objValue = $objDB->prepare('SELECT * FROM tl_metamodel_translatedtext WHERE att_id=? AND langcode=? AND item_id IN (' . implode(',', $arrIds) . ')')
-				->execute($this->get('id'), $this->getMetaModel()->getActiveLanguage());
+				->execute($this->get('id'), $strLangCode);
 		$arrReturn = array();
 		while ($objValue->next())
 		{
@@ -107,9 +219,13 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeComplex
 		return $arrReturn;
 	}
 
-	public function setDataFor($arrValues)
+	/**
+	 * Remove values for items in a certain lanugage.
+	 */
+	public function unsetValueFor($arrIds, $strLangCode)
 	{
-		// store to database.
+		$objValue = $objDB->prepare('DELETE FROM tl_metamodel_translatedtext WHERE att_id=? AND langcode=? AND item_id IN (' . implode(',', $arrIds) . ')')
+				->execute($this->get('id'), $strLangCode);
 	}
 }
 
