@@ -51,8 +51,11 @@ implements IMetaModelAttributeTranslated
 
 	public function getFieldDefinition()
 	{
+		$arrFieldDef=parent::getFieldDefinition();
 		$arrLanguages = array();
 		$arrFieldDef['inputType'] = 'text';
+
+
 /*
 		foreach((array)$this->getMetaModel()->getAvailableLanguages() as $strLangCode)
 		{
@@ -87,6 +90,11 @@ implements IMetaModelAttributeTranslated
 		);
 */
 		return $arrFieldDef;
+	}
+
+	public function valueToWidget($varValue)
+	{
+		return $varValue['value'];
 	}
 
 	public function parseValue($arrRowData, $strOutputFormat = 'text', $objSettings = null)
@@ -185,13 +193,14 @@ implements IMetaModelAttributeTranslated
 		// now update...
 		foreach ($arrExisting as $intId)
 		{
-			$objDB->prepare('UPDATE tl_metamodel_translatedlongtext SET value=?, tstamp=? WHERE att_id=? AND langcode=? AND item_id=?')
+			$objDB->prepare('UPDATE tl_metamodel_translatedtext SET value=?, tstamp=? WHERE att_id=? AND langcode=? AND item_id=?')
 				  ->execute($arrValues[$intId], time(), $this->get('id'), $strLangCode, $intId);
 		}
+
 		// ...and insert
-		foreach ($arrExisting as $intId)
+		foreach ($arrNewIds as $intId)
 		{
-			$objDB->prepare('INSERT INTO tl_metamodel_translatedlongtext SET value=? WHERE  att_id=? AND langcode=? AND item_id=?')
+			$objDB->prepare('INSERT INTO tl_metamodel_translatedtext %s')
 				  ->set(array(
 				  'tstamp' => time(),
 				  'value' => $arrValues[$intId],
