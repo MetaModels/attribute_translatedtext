@@ -54,41 +54,6 @@ implements IMetaModelAttributeTranslated
 		$arrFieldDef=parent::getFieldDefinition();
 		$arrLanguages = array();
 		$arrFieldDef['inputType'] = 'text';
-
-
-/*
-		foreach((array)$this->getMetaModel()->getAvailableLanguages() as $strLangCode)
-		{
-			$arrLanguages[$strLangCode] = $GLOBALS['TL_LANG']['LNG'][$strLangCode];
-		}
-		$arrFieldDef=parent::getFieldDefinition();
-		$arrFieldDef['inputType'] = 'multiColumnWizard';
-		$arrFieldDef['eval']['minCount'] = count($arrLanguages);
-		$arrFieldDef['eval']['maxCount'] = count($arrLanguages);
-		$arrFieldDef['eval']['columnFields'] = array
-		(
-			'langcode' => array
-			(
-				'label'                 => &$GLOBALS['TL_LANG']['tl_metamodel_translatedtext']['langcode'],
-				'exclude'               => true,
-				'inputType'             => 'select',
-				'options'               => $arrLanguages,
-				'eval' 			=> array(
-					'valign' => 'top',
-					'style' => 'width:250px',
-					'includeBlankOption'=>true,
-					'chosen'=>true
-				)
-			),
-			'value' => array
-			(
-				'label'                 => &$GLOBALS['TL_LANG']['tl_metamodel_translatedtext']['value'],
-				'exclude'               => true,
-				'inputType'             => 'text',
-				'eval' 			=> array('style' => 'width:250px;height:60px;')
-			),
-		);
-*/
 		return $arrFieldDef;
 	}
 
@@ -100,7 +65,7 @@ implements IMetaModelAttributeTranslated
 	public function parseValue($arrRowData, $strOutputFormat = 'text', $objSettings = null)
 	{
 		$arrResult = parent::parseValue($arrRowData, $strOutputFormat, $objSettings);
-		$arrResult['html'] = $arrRowData[$this->getColName()]['value'];
+		$arrResult['text'] = $arrRowData[$this->getColName()]['value'];
 		return $arrResult;
 	}
 
