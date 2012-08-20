@@ -62,13 +62,6 @@ implements IMetaModelAttributeTranslated
 		return $varValue['value'];
 	}
 
-	public function parseValue($arrRowData, $strOutputFormat = 'text', $objSettings = null)
-	{
-		$arrResult = parent::parseValue($arrRowData, $strOutputFormat, $objSettings);
-		$arrResult['text'] = $arrRowData[$this->getColName()]['value'];
-		return $arrResult;
-	}
-
 	public function getDataFor($arrIds)
 	{
 		$strActiveLanguage = $this->getMetaModel()->getActiveLanguage();
