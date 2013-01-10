@@ -33,9 +33,9 @@ extends MetaModelAttributeTranslatedReference
 		return 'tl_metamodel_translatedtext';
 	}
 
-	public function getFieldDefinition()
+	public function getFieldDefinition($arrOverrides = array())
 	{
-		$arrFieldDef=parent::getFieldDefinition();
+		$arrFieldDef=parent::getFieldDefinition($arrOverrides);
 		$arrFieldDef['inputType'] = 'text';
 		return $arrFieldDef;
 	}
