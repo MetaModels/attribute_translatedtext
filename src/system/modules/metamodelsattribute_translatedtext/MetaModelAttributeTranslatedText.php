@@ -28,6 +28,22 @@ if (!defined('TL_ROOT'))
 class MetaModelAttributeTranslatedText
 extends MetaModelAttributeTranslatedReference
 {
+	public function getAttributeSettingNames()
+	{
+		return array_merge(parent::getAttributeSettingNames(), array(
+			'isunique',
+			'flag',
+			'searchable',
+			'filterable',
+			'sortable',
+			'decodeEntities',
+			'mandatory',
+			'decodeEntities',
+			'trailingSlash',
+			'spaceToUnderscore'
+		));
+	}
+
 	protected function getValueTable()
 	{
 		return 'tl_metamodel_translatedtext';
