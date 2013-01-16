@@ -3,20 +3,23 @@
 $GLOBALS['TL_DCA']['tl_metamodel_dcasetting']['metasubselectpalettes']['attr_id']['translatedtext'] =
 array
 (
-	'backend' => array(
-		'tl_class',
-		'mandatory',
-		'filterable',
-		'sortable',
-		'flag',
-		'searchable',
-	),
-	'advanced' => array
-	(
+	'presentation' => array(
+        'tl_class', 
+    ),
+    'functions'  => array(
+        'mandatory',
+        'allowHtml',
+		'preserveTags',
 		'decodeEntities',
 		'trailingSlash',
-		'spaceToUnderscore',
-	),
+		'spaceToUnderscore',	
+    ),
+	'overview' => array(		
+		'filterable',
+		'searchable',
+		'sortable',
+		'flag'
+	)
 );
 
 ?>
