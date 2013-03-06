@@ -10,9 +10,25 @@
  * @package     MetaModels
  * @subpackage  AttributeTranslatedText
  * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author      Andreas Isaak <info@andreas-isaak.de>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
  */
 
-$GLOBALS['TL_DCA']['tl_metamodel_rendersetting']['metapalettes']['translatedtext extends default'] = array();
+/**
+ * Register the classes
+ */
+ClassLoader::addClasses(array
+(
+	'MetaModelAttributeTranslatedText'              => 'system/modules/metamodelsattribute_translatedtext/MetaModelAttributeTranslatedText.php',
+));
+
+
+/**
+ * Register the templates
+ */
+TemplateLoader::addFiles(array
+(
+	'mm_attr_translatedtext'              => 'system/modules/metamodelsattribute_translatedtext/templates',
+));
