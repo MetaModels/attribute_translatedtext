@@ -1,7 +1,7 @@
 {
 	"name":"metamodels/attribute-translatedtext",
 	"description":"MetaModels attribute for translated text",
-	"keywords":["contao", "metamodels", "attribute"],
+	"keywords":["contao", "metamodels", "attribute", "text", "translatable"],
 	"type":"contao-module",
 	"homepage":"http://now.metamodel.me/",
 	"license":"LGPL-3.0+",
