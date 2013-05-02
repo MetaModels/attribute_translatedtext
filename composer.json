@@ -1,5 +1,5 @@
 {
-	"name":"metamodels/attribute-translatedtext",
+	"name":"metamodels/attribute_translatedtext",
 	"description":"MetaModels attribute for translated text",
 	"keywords":["contao", "metamodels", "attribute", "text", "translatable"],
 	"type":"contao-module",
