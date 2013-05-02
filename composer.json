@@ -1,0 +1,34 @@
+{
+	"name":"metamodel/attribute-translatedtext",
+	"description":"MetaModels Attribute for translated text",
+	"keywords":["contao", "metamodels", "attribute"],
+	"type":"contao-module",
+	"homepage":"http://now.metamodel.me/",
+	"license":"LGPL-3.0+",
+	"authors":[
+		{
+			"name":"Christian Schiffler",
+			"email":"c.schiffler@cyberspectrum.de",
+			"homepage":"http://www.cyberspectrum.de",
+			"role":"Developer"
+		}
+	],
+	"support":{
+		"email":"mail@metamodel.me",
+		"issues":"https://github.com/MetaModels/attribute_translatedtext/issues",
+		"wiki":"https://github.com/MetaModels/attribute_translatedtext/wiki",
+		"irc":"irc://irc.freenode.org/contao.dev",
+		"source":"https://github.com/MetaModels/attribute_translatedtext"
+	},
+	"require":{
+		"php":">=5.3",
+		"contao/core":"~2.11"
+	},
+	"extra":{
+		"contao": {
+			"symlinks":{
+				"src/system/modules/metamodelsattribute_translatedtext":"system/modules/metamodelsattribute_translatedtext"
+			}
+		}
+	}
+}
