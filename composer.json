@@ -1,6 +1,6 @@
 {
 	"name":"metamodels/attribute-translatedtext",
-	"description":"MetaModels Attribute for translated text",
+	"description":"MetaModels attribute for translated text",
 	"keywords":["contao", "metamodels", "attribute"],
 	"type":"contao-module",
 	"homepage":"http://now.metamodel.me/",
@@ -16,8 +16,8 @@
 	"support":{
 		"email":"mail@metamodel.me",
 		"issues":"https://github.com/MetaModels/attribute_translatedtext/issues",
-		"wiki":"https://github.com/MetaModels/attribute_translatedtext/wiki",
-		"irc":"irc://irc.freenode.org/contao.dev",
+		"wiki":"http://de.contaowiki.org/MetaModels",
+		"irc":"irc://irc.freenode.org/contao.mm",
 		"source":"https://github.com/MetaModels/attribute_translatedtext"
 	},
 	"require":{
