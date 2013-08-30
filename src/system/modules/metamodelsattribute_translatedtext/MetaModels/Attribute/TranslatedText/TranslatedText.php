@@ -15,15 +15,22 @@
  * @filesource
  */
 
+namespace MetaModels\Attribute\TranslatedText;
+
+use MetaModels\Attribute\TranslatedReference;
+
 /**
  * This is the MetaModelAttribute class for handling translated text fields.
  *
- * @package	   MetaModels
+ * @package    MetaModels
  * @subpackage AttributeTranslatedText
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
-class MetaModelAttributeTranslatedText extends MetaModelAttributeTranslatedReference
+class TranslatedText extends TranslatedReference
 {
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getAttributeSettingNames()
 	{
 		return array_merge(parent::getAttributeSettingNames(), array(
@@ -40,14 +47,20 @@ class MetaModelAttributeTranslatedText extends MetaModelAttributeTranslatedRefer
 		));
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	protected function getValueTable()
 	{
 		return 'tl_metamodel_translatedtext';
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getFieldDefinition($arrOverrides = array())
 	{
-		$arrFieldDef=parent::getFieldDefinition($arrOverrides);
+		$arrFieldDef              = parent::getFieldDefinition($arrOverrides);
 		$arrFieldDef['inputType'] = 'text';
 		return $arrFieldDef;
 	}

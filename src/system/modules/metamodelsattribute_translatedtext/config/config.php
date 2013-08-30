@@ -15,5 +15,9 @@
  * @filesource
  */
 
-$GLOBALS['METAMODELS']['attributes']['translatedtext']['class'] = 'MetaModelAttributeTranslatedText';
+$GLOBALS['METAMODELS']['attributes']['translatedtext']['class'] = 'MetaModels\Attribute\TranslatedText\TranslatedText';
 $GLOBALS['METAMODELS']['attributes']['translatedtext']['image'] = 'system/modules/metamodelsattribute_translatedtext/html/text.png';
+
+// non composerized Contao 2.X autoload support.
+$GLOBALS['MM_AUTOLOAD'][] = dirname(__DIR__);
+$GLOBALS['MM_AUTOLOAD'][] = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'deprecated';
