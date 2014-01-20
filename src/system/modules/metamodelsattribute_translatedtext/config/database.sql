@@ -19,7 +19,7 @@ CREATE TABLE `tl_metamodel_translatedtext` (
   `langcode` varchar(2) NOT NULL default '',
   `value` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id`),
-  KEY `attvalue` (`att_id`, `value`)
+  KEY `attvalue` (`att_id`, `value`),
   KEY `attlang` (`att_id`, `langcode`),
-  KEY `attitem` (`att_id`, `item_id`),
+  KEY `attitem` (`att_id`, `item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
