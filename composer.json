@@ -54,7 +54,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"MetaModels": "src/system/modules/metamodelsattribute_translatedlongtext"
+			"MetaModels": "src/system/modules/metamodelsattribute_translatedtext"
 		}
 	},
 	"extra":{
