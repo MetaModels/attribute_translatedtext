@@ -9,7 +9,7 @@
  *
  * @package    MetaModels
  * @subpackage Tests
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Christopher Boelter <christopher@boelter.eu>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
