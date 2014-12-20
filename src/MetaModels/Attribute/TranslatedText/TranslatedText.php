@@ -28,7 +28,6 @@ use MetaModels\Attribute\TranslatedReference;
  *
  * @package    MetaModels
  * @subpackage AttributeTranslatedText
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
 class TranslatedText extends TranslatedReference
 {
