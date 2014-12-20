@@ -6,6 +6,7 @@
  * data in each collection.
  *
  * PHP version 5
+ *
  * @package     MetaModels
  * @subpackage  AttributeTranslatedText
  * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
@@ -16,24 +17,24 @@
 
 $GLOBALS['TL_DCA']['tl_metamodel_dcasetting']['metasubselectpalettes']['attr_id']['translatedtext'] = array
 (
-	'presentation'           => array
-	(
-		'tl_class',
-	),
-	'functions'              => array
-	(
-		'mandatory',
-		'allowHtml',
-		'preserveTags',
-		'decodeEntities',
-		'trailingSlash',
-		'spaceToUnderscore',
-	),
-	'overview'               => array
-	(
-		'filterable',
-		'searchable',
-		'sortable',
-		'flag'
-	)
+    'presentation' => array
+    (
+        'tl_class',
+    ),
+    'functions'    => array
+    (
+        'mandatory',
+        'allowHtml',
+        'preserveTags',
+        'decodeEntities',
+        'trailingSlash',
+        'spaceToUnderscore',
+    ),
+    'overview'     => array
+    (
+        'filterable',
+        'searchable',
+        'sortable',
+        'flag'
+    )
 );

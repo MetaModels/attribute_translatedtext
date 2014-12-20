@@ -6,6 +6,7 @@
  * data in each collection.
  *
  * PHP version 5
+ *
  * @package     MetaModels
  * @subpackage  AttributeTranslatedText
  * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
@@ -27,40 +28,40 @@ use MetaModels\Attribute\TranslatedReference;
  */
 class TranslatedText extends TranslatedReference
 {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAttributeSettingNames()
-	{
-		return array_merge(parent::getAttributeSettingNames(), array(
-			'isunique',
-			'flag',
-			'searchable',
-			'filterable',
-			'sortable',
-			'decodeEntities',
-			'mandatory',
-			'decodeEntities',
-			'trailingSlash',
-			'spaceToUnderscore'
-		));
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getAttributeSettingNames()
+    {
+        return array_merge(parent::getAttributeSettingNames(), array(
+            'isunique',
+            'flag',
+            'searchable',
+            'filterable',
+            'sortable',
+            'decodeEntities',
+            'mandatory',
+            'decodeEntities',
+            'trailingSlash',
+            'spaceToUnderscore'
+        ));
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getValueTable()
-	{
-		return 'tl_metamodel_translatedtext';
-	}
+    /**
+     * {@inheritdoc}
+     */
+    protected function getValueTable()
+    {
+        return 'tl_metamodel_translatedtext';
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getFieldDefinition($arrOverrides = array())
-	{
-		$arrFieldDef              = parent::getFieldDefinition($arrOverrides);
-		$arrFieldDef['inputType'] = 'text';
-		return $arrFieldDef;
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getFieldDefinition($arrOverrides = array())
+    {
+        $arrFieldDef              = parent::getFieldDefinition($arrOverrides);
+        $arrFieldDef['inputType'] = 'text';
+        return $arrFieldDef;
+    }
 }
