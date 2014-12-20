@@ -15,7 +15,7 @@
  * @filesource
  */
 
-namespace MetaModels\Test\Attribute\Text;
+namespace MetaModels\Test\Attribute\TranslatedText;
 
 use MetaModels\Attribute\TranslatedText\TranslatedText;
 
