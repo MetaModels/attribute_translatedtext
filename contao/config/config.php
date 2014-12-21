@@ -6,19 +6,16 @@
  * data in each collection.
  *
  * PHP version 5
+ *
  * @package     MetaModels
  * @subpackage  AttributeTranslatedText
  * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author      Andreas Isaak <info@andreas-isaak.de>
+ * @author      Christopher Boelter <christopher@boelter.eu>
  * @copyright   The MetaModels team.
  * @license     LGPL.
  * @filesource
  */
 
-/**
- * Register the templates
- */
-TemplateLoader::addFiles(array
-(
-	'mm_attr_translatedtext' => 'system/modules/metamodelsattribute_translatedtext/templates',
-));
+$GLOBALS['METAMODELS']['attributes']['translatedtext']['class'] = 'MetaModels\Attribute\TranslatedText\TranslatedText';
+$GLOBALS['METAMODELS']['attributes']['translatedtext']['image'] = 'system/modules/metamodelsattribute_translatedtext/html/text.png';
