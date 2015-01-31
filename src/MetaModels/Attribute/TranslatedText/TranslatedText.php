@@ -38,10 +38,8 @@ class TranslatedText extends TranslatedReference
     {
         return array_merge(parent::getAttributeSettingNames(), array(
             'isunique',
-            'flag',
             'searchable',
             'filterable',
-            'sortable',
             'decodeEntities',
             'mandatory',
             'decodeEntities',
