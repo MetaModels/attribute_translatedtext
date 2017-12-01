@@ -37,9 +37,10 @@ class AttributeTypeFactory extends AbstractAttributeTypeFactory
      */
     public function __construct()
     {
+        var_dump('dsf');
         parent::__construct();
         $this->typeName  = 'translatedtext';
-        $this->typeIcon  = 'system/modules/metamodelsattribute_translatedtext/html/text.png';
+        $this->typeIcon  = 'bundles/metamodelsattributetranslatedtext/text.png';
         $this->typeClass = 'MetaModels\Attribute\TranslatedText\TranslatedText';
     }
 }

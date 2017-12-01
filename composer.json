@@ -53,6 +53,7 @@
     ]
   },
   "extra": {
+    "contao-manager-plugin": "MetaModels\\AttributeTranslatedTextBundle\\ContaoManager\\Plugin",
     "contao": {
       "transifex": {
         "project": "metamodels",
