@@ -28,7 +28,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * This is the class that loads and manages the bundle configuration
  */
-class MetaModelsAttributeTranslatedText extends Extension
+class MetaModelsAttributeTranslatedTextExtension extends Extension
 {
     /**
      * {@inheritDoc}

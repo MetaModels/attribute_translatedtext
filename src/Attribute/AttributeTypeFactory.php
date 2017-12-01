@@ -25,6 +25,7 @@
 
 namespace MetaModels\AttributeTranslatedTextBundle\Attribute;
 
+use Doctrine\DBAL\Connection;
 use MetaModels\Attribute\AbstractAttributeTypeFactory;
 
 /**
@@ -33,14 +34,32 @@ use MetaModels\Attribute\AbstractAttributeTypeFactory;
 class AttributeTypeFactory extends AbstractAttributeTypeFactory
 {
     /**
-     * {@inheritDoc}
+     * Databse connection.
+     *
+     * @var Connection
      */
-    public function __construct()
+    private $connection;
+
+    /**
+     * Construct the factory.
+     *
+     * @param Connection $connection Database connection.
+     */
+    public function __construct(Connection $connection)
     {
-        var_dump('dsf');
         parent::__construct();
-        $this->typeName  = 'translatedtext';
-        $this->typeIcon  = 'bundles/metamodelsattributetranslatedtext/text.png';
-        $this->typeClass = 'MetaModels\Attribute\TranslatedText\TranslatedText';
+
+        $this->connection = $connection;
+        $this->typeName   = 'translatedtext';
+        $this->typeIcon   = 'bundles/metamodelsattributetranslatedtext/text.png';
+        $this->typeClass  = TranslatedText::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createInstance($information, $metaModel)
+    {
+        return new $this->typeClass($metaModel, $information, $this->connection);
     }
 }

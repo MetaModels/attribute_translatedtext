@@ -18,7 +18,7 @@
  * @filesource
  */
 
-namespace MetaModels\MetaModelsAttributeTranslatedText\ContaoManager;
+namespace MetaModels\AttributeTranslatedTextBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
