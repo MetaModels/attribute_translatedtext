@@ -10,20 +10,36 @@
  * @package    MetaModels
  * @subpackage Tests
  * @author     Christopher Boelter <christopher@boelter.eu>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
  */
 
-namespace MetaModels\Test\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\Test\Attribute;
 
-use MetaModels\Attribute\TranslatedText\TranslatedText;
+use Doctrine\DBAL\Connection;
+use MetaModels\AttributeTranslatedTextBundle\Attribute\TranslatedText;
+use MetaModels\IMetaModel;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests to test class TranslatedText.
  */
-class TranslatedTextTest extends \PHPUnit_Framework_TestCase
+class TranslatedTextTest extends TestCase
 {
+    /**
+     * Mock the database connection.
+     *
+     * @return \PHPUnit_Framework_MockObject_MockObject|Connection
+     */
+    private function mockConnection()
+    {
+        return $this->getMockBuilder(Connection::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+
     /**
      * Mock a MetaModel.
      *
@@ -34,11 +50,7 @@ class TranslatedTextTest extends \PHPUnit_Framework_TestCase
      */
     protected function mockMetaModel($language, $fallbackLanguage)
     {
-        $metaModel = $this->getMock(
-            'MetaModels\MetaModel',
-            array(),
-            array(array())
-        );
+        $metaModel = $this->getMockForAbstractClass('MetaModels\IMetaModel', array());
 
         $metaModel
             ->expects($this->any())
@@ -65,7 +77,7 @@ class TranslatedTextTest extends \PHPUnit_Framework_TestCase
      */
     public function testInstantiation()
     {
-        $text = new TranslatedText($this->mockMetaModel('en', 'en'));
+        $text = new TranslatedText($this->mockMetaModel('en', 'en'), [], $this->mockConnection());
         $this->assertInstanceOf('MetaModels\Attribute\TranslatedText\TranslatedText', $text);
     }
 }

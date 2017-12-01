@@ -52,6 +52,11 @@
       "src/deprecated-autoload.php"
     ]
   },
+  "autoload-dev": {
+    "psr-4": {
+      "MetaModels\\AttributeTranslatedTextBundle\\Test\\": "tests"
+    }
+  },
   "extra": {
     "contao-manager-plugin": "MetaModels\\AttributeTranslatedTextBundle\\ContaoManager\\Plugin",
     "contao": {

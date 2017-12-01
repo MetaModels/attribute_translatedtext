@@ -13,17 +13,18 @@
  * The Front-End modules allow you to build powerful listing and filtering of the
  * data in each collection.
  *
- * @package     MetaModels
- * @subpackage  AttributeTranslatedText
- * @author      Christian Schiffler <c.schiffler@cyberspectrum.de>
- * @author      Andreas Isaak <info@andreas-isaak.de>
- * @author      Christopher Boelter <christopher@boelter.eu>
- * @author      Stefan Heimes <stefan_heimes@hotmail.com>
- * @author      Sven Baumann <baumann.sv@gmail.com>
- * @copyright   2012-2016 The MetaModels team.
- * @license     https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0
+ * @package    MetaModels
+ * @subpackage AttributeTranslatedText
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Andreas Isaak <info@andreas-isaak.de>
+ * @author     Christopher Boelter <christopher@boelter.eu>
+ * @author     Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
+ * @copyright  2012-2017 The MetaModels team.
+ * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
 $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['simplelookup_palettes']['translatedtext'] =
-	&$GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['simplelookup_palettes']['_translated_'];
+    &$GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['simplelookup_palettes']['_translated_'];

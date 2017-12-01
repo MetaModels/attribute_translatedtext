@@ -25,26 +25,29 @@
  * @filesource
  */
 
-/**
+/*
  * Table tl_metamodel_attribute
  */
 
-/**
+/*
  * Add palette configuration.
  */
+
 $GLOBALS['TL_DCA']['tl_metamodel_attribute']['metapalettes']['translatedtext extends _complexattribute_'] = array();
 
-/**
+/*
  * Add data provider.
  */
+
 $GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['data_provider']['tl_metamodel_translatedtext'] = array
 (
     'source' => 'tl_metamodel_translatedtext'
 );
 
-/**
+/*
  * Add child condition.
  */
+
 $GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['childCondition'][] = array
 (
     'from'   => 'tl_metamodel_attribute',

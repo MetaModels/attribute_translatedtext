@@ -11,23 +11,38 @@
  * @subpackage Tests
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Christopher Boelter <christopher@boelter.eu>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  The MetaModels team.
  * @license    LGPL-3+.
  * @filesource
  */
 
-namespace MetaModels\Test\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\Test\Attribute;
 
+use Doctrine\DBAL\Connection;
 use MetaModels\Attribute\IAttributeTypeFactory;
-use MetaModels\Attribute\TranslatedText\AttributeTypeFactory;
+use MetaModels\AttributeTranslatedTextBundle\Attribute\AttributeTypeFactory;
+use MetaModels\AttributeTranslatedTextBundle\Attribute\TranslatedText;
 use MetaModels\IMetaModel;
-use MetaModels\Test\Attribute\AttributeTypeFactoryTest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test the attribute factory.
  */
-class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
+class TranslatedTextAttributeTypeFactoryTest extends TestCase
 {
+    /**
+     * Mock the database connection.
+     *
+     * @return \PHPUnit_Framework_MockObject_MockObject|Connection
+     */
+    private function mockConnection()
+    {
+        return $this->getMockBuilder(Connection::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+
     /**
      * Mock a MetaModel.
      *
@@ -41,11 +56,7 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
      */
     protected function mockMetaModel($tableName, $language, $fallbackLanguage)
     {
-        $metaModel = $this->getMock(
-            'MetaModels\MetaModel',
-            array(),
-            array(array())
-        );
+        $metaModel = $this->getMockForAbstractClass('MetaModels\IMetaModel', array());
 
         $metaModel
             ->expects($this->any())
@@ -72,7 +83,7 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
      */
     protected function getAttributeFactories()
     {
-        return array(new AttributeTypeFactory());
+        return array(new AttributeTypeFactory($this->mockConnection()));
     }
 
     /**
@@ -82,14 +93,14 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
      */
     public function testCreateTags()
     {
-        $factory   = new AttributeTypeFactory();
+        $factory   = new AttributeTypeFactory($this->mockConnection());
         $values    = array();
         $attribute = $factory->createInstance(
             $values,
             $this->mockMetaModel('mm_test', 'de', 'en')
         );
 
-        $this->assertInstanceOf('MetaModels\Attribute\TranslatedText\TranslatedText', $attribute);
+        $this->assertInstanceOf(TranslatedText::class, $attribute);
 
         foreach ($values as $key => $value) {
             $this->assertEquals($value, $attribute->get($key), $key);

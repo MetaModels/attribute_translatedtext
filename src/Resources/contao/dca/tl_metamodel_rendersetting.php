@@ -16,8 +16,6 @@
  * @package    MetaModels
  * @subpackage AttributeTranslatedText
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
- * @author     Andreas Isaak <info@andreas-isaak.de>
- * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  2012-2017 The MetaModels team.
