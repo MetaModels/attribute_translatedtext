@@ -1,0 +1,8 @@
+services:
+    metamodels.attribute_translatedtext.factory:
+        class: MetaModels\AttributeTranslatedTextBundle\Attribute\AttributeTypeFactory
+        arguments:
+            - "@database_connection"
+            - "@metamodels.table_manipulator"
+        tags:
+          - { name: metamodels.attribute_factory }
