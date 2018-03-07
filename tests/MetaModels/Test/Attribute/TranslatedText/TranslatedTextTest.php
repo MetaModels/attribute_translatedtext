@@ -10,6 +10,7 @@
  * @package    MetaModels
  * @subpackage Tests
  * @author     Christopher Boelter <christopher@boelter.eu>
+ * @author     Stefan Heimes <stefan_heimes@hotmail.com>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
@@ -18,11 +19,13 @@
 namespace MetaModels\Test\Attribute\TranslatedText;
 
 use MetaModels\Attribute\TranslatedText\TranslatedText;
+use MetaModels\IMetaModel;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests to test class TranslatedText.
  */
-class TranslatedTextTest extends \PHPUnit_Framework_TestCase
+class TranslatedTextTest extends TestCase
 {
     /**
      * Mock a MetaModel.
@@ -34,11 +37,7 @@ class TranslatedTextTest extends \PHPUnit_Framework_TestCase
      */
     protected function mockMetaModel($language, $fallbackLanguage)
     {
-        $metaModel = $this->getMock(
-            'MetaModels\MetaModel',
-            array(),
-            array(array())
-        );
+        $metaModel = $this->getMockForAbstractClass('MetaModels\IMetaModel');
 
         $metaModel
             ->expects($this->any())
