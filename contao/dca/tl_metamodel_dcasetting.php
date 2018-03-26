@@ -58,5 +58,6 @@ $GLOBALS['TL_DCA']['tl_metamodel_dcasetting']['fields']['rgxp'] = array
     (
         'tl_class'           => 'clr',
         'includeBlankOption' => true
-    )
+    ),
+    'sql'       => 'varchar(10) NOT NULL default \'\''
 );
