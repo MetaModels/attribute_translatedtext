@@ -24,4 +24,4 @@
  * @filesource
  */
 
-$GLOBALS['TL_DCA']['tl_metamodel_rendersetting']['metapalettes']['translatedtext extends default'] = array();
+$GLOBALS['TL_DCA']['tl_metamodel_rendersetting']['metapalettes']['translatedtext extends default'] = [];

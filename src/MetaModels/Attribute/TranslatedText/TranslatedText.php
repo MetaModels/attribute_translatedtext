@@ -44,16 +44,19 @@ class TranslatedText extends TranslatedReference
      */
     public function getAttributeSettingNames()
     {
-        return array_merge(parent::getAttributeSettingNames(), array(
-            'isunique',
-            'searchable',
-            'filterable',
-            'decodeEntities',
-            'mandatory',
-            'decodeEntities',
-            'trailingSlash',
-            'spaceToUnderscore'
-        ));
+        return array_merge(
+            parent::getAttributeSettingNames(),
+            [
+                'isunique',
+                'searchable',
+                'filterable',
+                'decodeEntities',
+                'mandatory',
+                'decodeEntities',
+                'trailingSlash',
+                'spaceToUnderscore'
+            ]
+        );
     }
 
     /**
@@ -67,7 +70,7 @@ class TranslatedText extends TranslatedReference
     /**
      * {@inheritdoc}
      */
-    public function getFieldDefinition($arrOverrides = array())
+    public function getFieldDefinition($arrOverrides = [])
     {
         $arrFieldDef              = parent::getFieldDefinition($arrOverrides);
         $arrFieldDef['inputType'] = 'text';

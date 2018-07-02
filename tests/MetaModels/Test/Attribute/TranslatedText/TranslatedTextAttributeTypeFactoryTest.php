@@ -12,6 +12,7 @@
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author     Sven Baumann <baumann.sv@gmail.com>
  * @copyright  The MetaModels team.
  * @license    LGPL-3+.
  * @filesource
@@ -69,7 +70,7 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
      */
     protected function getAttributeFactories()
     {
-        return array(new AttributeTypeFactory());
+        return [new AttributeTypeFactory()];
     }
 
     /**
@@ -80,7 +81,7 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
     public function testCreateTags()
     {
         $factory   = new AttributeTypeFactory();
-        $values    = array();
+        $values    = [];
         $attribute = $factory->createInstance(
             $values,
             $this->mockMetaModel('mm_test', 'de', 'en')

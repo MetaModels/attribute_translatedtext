@@ -31,38 +31,32 @@
 /**
  * Add palette configuration.
  */
-$GLOBALS['TL_DCA']['tl_metamodel_attribute']['metapalettes']['translatedtext extends _complexattribute_'] = array();
+$GLOBALS['TL_DCA']['tl_metamodel_attribute']['metapalettes']['translatedtext extends _complexattribute_'] = [];
 
 /**
  * Add data provider.
  */
-$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['data_provider']['tl_metamodel_translatedtext'] = array
-(
+$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['data_provider']['tl_metamodel_translatedtext'] = [
     'source' => 'tl_metamodel_translatedtext'
-);
+];
 
 /**
  * Add child condition.
  */
-$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['childCondition'][] = array
-(
+$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['childCondition'][] = [
     'from'   => 'tl_metamodel_attribute',
     'to'     => 'tl_metamodel_translatedtext',
-    'setOn'  => array
-    (
-        array
-        (
+    'setOn'  => [
+        [
             'to_field'   => 'att_id',
             'from_field' => 'id',
-        ),
-    ),
-    'filter' => array
-    (
-        array
-        (
+        ],
+    ],
+    'filter' => [
+        [
             'local'     => 'att_id',
             'remote'    => 'id',
             'operation' => '=',
-        ),
-    )
-);
+        ],
+    ]
+];

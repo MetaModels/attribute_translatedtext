@@ -14,6 +14,7 @@
  * @subpackage AttributeTranslatedText
  * @author     Ingolf Steinhardt <info@e-spin.de>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author     Sven Baumann <baumann.sv@gmail.com>
  * @copyright  2012-2018 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
@@ -39,7 +40,7 @@ class BackendSubscriber extends BaseSubscriber
         $this
             ->addListener(
                 GetPropertyOptionsEvent::NAME,
-                array($this, 'getRgxpOptions')
+                [$this, 'getRgxpOptions']
             );
     }
 
@@ -57,7 +58,7 @@ class BackendSubscriber extends BaseSubscriber
             return;
         }
 
-        $options = array(
+        $options = [
             'alnum'    => 'alnum',
             'alpha'    => 'alpha',
             'digit'    => 'digit',
@@ -66,7 +67,7 @@ class BackendSubscriber extends BaseSubscriber
             'extnd'    => 'extnd',
             'friendly' => 'friendly',
             'phone'    => 'phone',
-        );
+        ];
 
         $event->setOptions($options);
     }
