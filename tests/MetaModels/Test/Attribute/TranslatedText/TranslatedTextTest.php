@@ -11,6 +11,7 @@
  * @subpackage Tests
  * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author     Sven Baumann <baumann.sv@gmail.com>
  * @copyright  The MetaModels team.
  * @license    LGPL.
  * @filesource
@@ -37,7 +38,7 @@ class TranslatedTextTest extends TestCase
      */
     protected function mockMetaModel($language, $fallbackLanguage)
     {
-        $metaModel = $this->getMockForAbstractClass('MetaModels\IMetaModel');
+        $metaModel = $this->getMockForAbstractClass(IMetaModel::class);
 
         $metaModel
             ->expects($this->any())
@@ -65,6 +66,6 @@ class TranslatedTextTest extends TestCase
     public function testInstantiation()
     {
         $text = new TranslatedText($this->mockMetaModel('en', 'en'));
-        $this->assertInstanceOf('MetaModels\Attribute\TranslatedText\TranslatedText', $text);
+        $this->assertInstanceOf(TranslatedText::class, $text);
     }
 }
