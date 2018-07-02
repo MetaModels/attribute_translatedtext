@@ -3,7 +3,7 @@
 /**
  * This file is part of MetaModels/attribute_translatedtext.
  *
- * (c) 2012-2017 The MetaModels team.
+ * (c) 2012-2018 The MetaModels team.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,8 +20,8 @@
  * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @author     David Molineus <david.molineus@netzmacht.de>
- * @copyright  2012-2017 The MetaModels team.
- * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0
+ * @copyright  2012-2018 The MetaModels team.
+ * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
@@ -33,40 +33,34 @@
  * Add palette configuration.
  */
 
-$GLOBALS['TL_DCA']['tl_metamodel_attribute']['metapalettes']['translatedtext extends _complexattribute_'] = array();
+$GLOBALS['TL_DCA']['tl_metamodel_attribute']['metapalettes']['translatedtext extends _complexattribute_'] = [];
 
 /*
  * Add data provider.
  */
 
-$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['data_provider']['tl_metamodel_translatedtext'] = array
-(
+$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['data_provider']['tl_metamodel_translatedtext'] = [
     'source' => 'tl_metamodel_translatedtext'
-);
+];
 
 /*
  * Add child condition.
  */
 
-$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['childCondition'][] = array
-(
+$GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['childCondition'][] = [
     'from'   => 'tl_metamodel_attribute',
     'to'     => 'tl_metamodel_translatedtext',
-    'setOn'  => array
-    (
-        array
-        (
+    'setOn'  => [
+        [
             'to_field'   => 'att_id',
             'from_field' => 'id',
-        ),
-    ),
-    'filter' => array
-    (
-        array
-        (
+        ],
+    ],
+    'filter' => [
+        [
             'local'     => 'att_id',
             'remote'    => 'id',
             'operation' => '=',
-        ),
-    )
-);
+        ],
+    ]
+];

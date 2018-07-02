@@ -12,6 +12,8 @@
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     David Molineus <david.molineus@netzmacht.de>
+ * @author     Stefan Heimes <stefan_heimes@hotmail.com>
+ * @author     Sven Baumann <baumann.sv@gmail.com>
  * @copyright  The MetaModels team.
  * @license    LGPL-3+.
  * @filesource
@@ -56,7 +58,7 @@ class TranslatedTextAttributeTypeFactoryTest extends TestCase
      */
     protected function mockMetaModel($tableName, $language, $fallbackLanguage)
     {
-        $metaModel = $this->getMockForAbstractClass('MetaModels\IMetaModel', array());
+        $metaModel = $this->getMockForAbstractClass(IMetaModel::class);
 
         $metaModel
             ->expects($this->any())
@@ -83,7 +85,7 @@ class TranslatedTextAttributeTypeFactoryTest extends TestCase
      */
     protected function getAttributeFactories()
     {
-        return array(new AttributeTypeFactory($this->mockConnection()));
+        return [new AttributeTypeFactory($this->mockConnection())];
     }
 
     /**
@@ -94,7 +96,7 @@ class TranslatedTextAttributeTypeFactoryTest extends TestCase
     public function testCreateTags()
     {
         $factory   = new AttributeTypeFactory($this->mockConnection());
-        $values    = array();
+        $values    = [];
         $attribute = $factory->createInstance(
             $values,
             $this->mockMetaModel('mm_test', 'de', 'en')
