@@ -1,1 +1,1 @@
-<span class="text<?= $this->additional_class; ?>"><?= $this->raw['value']; ?></span>
+<span class="text<?= $this->additional_class ?>"><?= \StringUtil::encodeEmail($this->raw['value']) ?></span>
