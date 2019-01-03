@@ -29,9 +29,6 @@ use MetaModels\Attribute\TranslatedReference;
 
 /**
  * This is the MetaModelAttribute class for handling translated text fields.
- *
- * @package    MetaModels
- * @subpackage AttributeTranslatedText
  */
 class TranslatedText extends TranslatedReference
 {
