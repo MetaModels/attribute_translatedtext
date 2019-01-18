@@ -6,3 +6,11 @@ services:
             - "@metamodels.table_manipulator"
         tags:
           - { name: metamodels.attribute_factory }
+
+    MetaModels\AttributeTranslatedTextBundle\EventListener\RgXpOptionsListener:
+        tags:
+          - {
+              name: kernel.event_listener,
+              event: 'dc-general.view.contao2backend.get-property-options',
+              method: 'getRgxpOptions'
+            }

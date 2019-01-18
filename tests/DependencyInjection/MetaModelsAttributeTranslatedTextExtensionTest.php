@@ -13,6 +13,7 @@
  * @package    MetaModels
  * @subpackage AttributeTranslatedText
  * @author     David Molineus <david.molineus@netzmacht.de>
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @copyright  2012-2017 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_text/blob/master/LICENSE LGPL-3.0
  * @filesource
@@ -22,6 +23,7 @@ namespace MetaModels\AttributeTranslatedTextBundle\Test\DependencyInjection;
 
 use MetaModels\AttributeTranslatedTextBundle\Attribute\AttributeTypeFactory;
 use MetaModels\AttributeTranslatedTextBundle\DependencyInjection\MetaModelsAttributeTranslatedTextExtension;
+use MetaModels\AttributeTranslatedTextBundle\EventListener\RgXpOptionsListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -55,10 +57,10 @@ class MetaModelsAttributeTranslatedTextExtensionTest extends TestCase
         $container = $this->getMockBuilder(ContainerBuilder::class)->getMock();
 
         $container
-            ->expects($this->once())
+            ->expects($this->exactly(2))
             ->method('setDefinition')
-            ->with(
-                'metamodels.attribute_translatedtext.factory',
+            ->withConsecutive(
+                ['metamodels.attribute_translatedtext.factory',
                 $this->callback(
                     function ($value) {
                         /** @var Definition $value */
@@ -68,7 +70,20 @@ class MetaModelsAttributeTranslatedTextExtensionTest extends TestCase
 
                         return true;
                     }
-                )
+                )],
+                [RgXpOptionsListener::class,
+                $this->callback(
+                    function ($value) {
+                        /** @var Definition $value */
+                        $this->assertInstanceOf(Definition::class, $value);
+                        $this->assertCount(1, $tags = $value->getTag('kernel.event_listener'));
+                        $this->assertCount(2, $tags[0]);
+                        $this->assertSame('dc-general.view.contao2backend.get-property-options', $tags[0]['event']);
+                        $this->assertSame('getRgxpOptions', $tags[0]['method']);
+
+                        return true;
+                    }
+                )]
             );
 
         $extension = new MetaModelsAttributeTranslatedTextExtension();
