@@ -33,8 +33,8 @@
   },
   "require": {
     "php": "^7.1",
-    "contao-community-alliance/dc-general": "^2.0@dev",
-    "contao/core-bundle": "^4.4",
+    "contao-community-alliance/dc-general": "^2.1.0",
+    "contao/core-bundle": "^4.4.8",
     "metamodels/attribute_text": "^2.1@dev",
     "metamodels/core": "^2.1@dev",
     "symfony/dependency-injection": "^3.3 || ^4.0",
@@ -42,7 +42,7 @@
   },
   "require-dev": {
     "contao/manager-plugin": "^2.1",
-    "menatwork/contao-multicolumnwizard-bundle": "^3.4.0@beta",
+    "menatwork/contao-multicolumnwizard-bundle": "^3.4",
     "phpcq/all-tasks": "^1.2"
   },
   "autoload": {
