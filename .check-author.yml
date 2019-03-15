@@ -2,7 +2,7 @@ ignore:
   - 'Mini Model <minimodel@metamodel.me>'
 
 exclude:
-  - /^contao\/languages/
+  - /^src\/Resources\/contao\/languages/
 
 mapping:
   'Andreas Isaak <info@andreas-isaak.de>': 'Andreas Isaak <andy.jared@googlemail.com>'
@@ -10,3 +10,11 @@ mapping:
   'Christopher Boelter <christopher@boelter.eu>':
     - 'cboelter <christopher@boelter.eu>'
     - 'Christopher Boelter <christopher@boelter.eu>'
+
+copy-left:
+  'Ingolf Steinhardt <info@e-spin.de>':
+    - src/EventListener/RgXpOptionsListener.php
+  'Stefan Heimes <stefan_heimes@hotmail.com>':
+    - src/EventListener/RgXpOptionsListener.php
+  'Sven Baumann <baumann.sv@gmail.com>':
+    - src/EventListener/RgXpOptionsListener.php

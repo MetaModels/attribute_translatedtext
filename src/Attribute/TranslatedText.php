@@ -17,13 +17,14 @@
  * @author     David Maack <maack@men-at-work.de>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
  * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @author     Ingolf Steinhardt <info@e-spin.de>
  * @copyright  2012-2019 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
-namespace MetaModels\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\Attribute;
 
 use MetaModels\Attribute\TranslatedReference;
 

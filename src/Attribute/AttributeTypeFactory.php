@@ -13,13 +13,15 @@
  * @package    MetaModels/attribute_translatedtext
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  2012-2019 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
-namespace MetaModels\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\Attribute;
 
+use Doctrine\DBAL\Connection;
 use MetaModels\Attribute\AbstractAttributeTypeFactory;
 
 /**
@@ -28,13 +30,32 @@ use MetaModels\Attribute\AbstractAttributeTypeFactory;
 class AttributeTypeFactory extends AbstractAttributeTypeFactory
 {
     /**
-     * {@inheritDoc}
+     * Databse connection.
+     *
+     * @var Connection
      */
-    public function __construct()
+    private $connection;
+
+    /**
+     * Construct the factory.
+     *
+     * @param Connection $connection Database connection.
+     */
+    public function __construct(Connection $connection)
     {
         parent::__construct();
-        $this->typeName  = 'translatedtext';
-        $this->typeIcon  = 'system/modules/metamodelsattribute_translatedtext/html/text.png';
-        $this->typeClass = TranslatedText::class;
+
+        $this->connection = $connection;
+        $this->typeName   = 'translatedtext';
+        $this->typeIcon   = 'bundles/metamodelsattributetranslatedtext/text.png';
+        $this->typeClass  = TranslatedText::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createInstance($information, $metaModel)
+    {
+        return new $this->typeClass($metaModel, $information, $this->connection);
     }
 }

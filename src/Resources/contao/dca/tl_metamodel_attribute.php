@@ -15,30 +15,34 @@
  * @author     Andreas Isaak <info@andreas-isaak.de>
  * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  2012-2019 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
-/**
+/*
  * Table tl_metamodel_attribute
  */
 
-/**
+/*
  * Add palette configuration.
  */
+
 $GLOBALS['TL_DCA']['tl_metamodel_attribute']['metapalettes']['translatedtext extends _complexattribute_'] = [];
 
-/**
+/*
  * Add data provider.
  */
+
 $GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['data_provider']['tl_metamodel_translatedtext'] = [
     'source' => 'tl_metamodel_translatedtext'
 ];
 
-/**
+/*
  * Add child condition.
  */
+
 $GLOBALS['TL_DCA']['tl_metamodel_attribute']['dca_config']['childCondition'][] = [
     'from'   => 'tl_metamodel_attribute',
     'to'     => 'tl_metamodel_translatedtext',

@@ -10,7 +10,9 @@
  * This project is provided in good faith and hope to be usable by anyone.
  *
  * @package    MetaModels/attribute_translatedtext
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Christopher Boelter <christopher@boelter.eu>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @copyright  2012-2019 The MetaModels team.
@@ -18,9 +20,10 @@
  * @filesource
  */
 
-namespace MetaModels\Test\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\Test\Attribute;
 
-use MetaModels\Attribute\TranslatedText\TranslatedText;
+use Doctrine\DBAL\Connection;
+use MetaModels\AttributeTranslatedTextBundle\Attribute\TranslatedText;
 use MetaModels\IMetaModel;
 use PHPUnit\Framework\TestCase;
 
@@ -29,6 +32,18 @@ use PHPUnit\Framework\TestCase;
  */
 class TranslatedTextTest extends TestCase
 {
+    /**
+     * Mock the database connection.
+     *
+     * @return \PHPUnit_Framework_MockObject_MockObject|Connection
+     */
+    private function mockConnection()
+    {
+        return $this->getMockBuilder(Connection::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+
     /**
      * Mock a MetaModel.
      *
@@ -42,19 +57,16 @@ class TranslatedTextTest extends TestCase
         $metaModel = $this->getMockForAbstractClass(IMetaModel::class);
 
         $metaModel
-            ->expects($this->any())
             ->method('getTableName')
-            ->will($this->returnValue('mm_unittest'));
+            ->willReturn('mm_unittest');
 
         $metaModel
-            ->expects($this->any())
             ->method('getActiveLanguage')
-            ->will($this->returnValue($language));
+            ->willReturn($language);
 
         $metaModel
-            ->expects($this->any())
             ->method('getFallbackLanguage')
-            ->will($this->returnValue($fallbackLanguage));
+            ->willReturn($fallbackLanguage);
 
         return $metaModel;
     }
@@ -66,7 +78,7 @@ class TranslatedTextTest extends TestCase
      */
     public function testInstantiation()
     {
-        $text = new TranslatedText($this->mockMetaModel('en', 'en'));
+        $text = new TranslatedText($this->mockMetaModel('en', 'en'), [], $this->mockConnection());
         $this->assertInstanceOf(TranslatedText::class, $text);
     }
 }

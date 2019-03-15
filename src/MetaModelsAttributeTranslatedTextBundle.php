@@ -11,20 +11,19 @@
  * This project is provided in good faith and hope to be usable by anyone.
  *
  * @package    MetaModels/attribute_translatedtext
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
- * @author     Andreas Isaak <info@andreas-isaak.de>
- * @author     Christopher Boelter <christopher@boelter.eu>
- * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  2012-2019 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
+namespace MetaModels\AttributeTranslatedTextBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 /**
- * Register the templates
+ * This is the bundle class.
  */
-\Contao\TemplateLoader::addFiles(
-    [
-        'mm_attr_translatedtext' => 'system/modules/metamodelsattribute_translatedtext/templates',
-    ]
-);
+class MetaModelsAttributeTranslatedTextBundle extends Bundle
+{
+}

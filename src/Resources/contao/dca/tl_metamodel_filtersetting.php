@@ -15,10 +15,11 @@
  * @author     Andreas Isaak <info@andreas-isaak.de>
  * @author     Christopher Boelter <christopher@boelter.eu>
  * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  2012-2019 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
 $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['simplelookup_palettes']['translatedtext'] =
-	&$GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['simplelookup_palettes']['_translated_'];
+    &$GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['simplelookup_palettes']['_translated_'];

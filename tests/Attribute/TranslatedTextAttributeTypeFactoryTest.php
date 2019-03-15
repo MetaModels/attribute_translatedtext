@@ -13,24 +13,38 @@
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
  * @author     Sven Baumann <baumann.sv@gmail.com>
+ * @author     David Molineus <david.molineus@netzmacht.de>
  * @copyright  2012-2019 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
-namespace MetaModels\Test\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\Test\Attribute;
 
+use Doctrine\DBAL\Connection;
 use MetaModels\Attribute\IAttributeTypeFactory;
-use MetaModels\Attribute\TranslatedText\AttributeTypeFactory;
+use MetaModels\AttributeTranslatedTextBundle\Attribute\AttributeTypeFactory;
+use MetaModels\AttributeTranslatedTextBundle\Attribute\TranslatedText;
 use MetaModels\IMetaModel;
-use MetaModels\Test\Attribute\AttributeTypeFactoryTest;
-use MetaModels\Attribute\TranslatedText\TranslatedText;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test the attribute factory.
  */
-class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
+class TranslatedTextAttributeTypeFactoryTest extends TestCase
 {
+    /**
+     * Mock the database connection.
+     *
+     * @return \PHPUnit_Framework_MockObject_MockObject|Connection
+     */
+    private function mockConnection()
+    {
+        return $this->getMockBuilder(Connection::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+
     /**
      * Mock a MetaModel.
      *
@@ -47,19 +61,16 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
         $metaModel = $this->getMockForAbstractClass(IMetaModel::class);
 
         $metaModel
-            ->expects($this->any())
             ->method('getTableName')
-            ->will($this->returnValue($tableName));
+            ->willReturn($tableName);
 
         $metaModel
-            ->expects($this->any())
             ->method('getActiveLanguage')
-            ->will($this->returnValue($language));
+            ->willReturn($language);
 
         $metaModel
-            ->expects($this->any())
             ->method('getFallbackLanguage')
-            ->will($this->returnValue($fallbackLanguage));
+            ->willReturn($fallbackLanguage);
 
         return $metaModel;
     }
@@ -71,7 +82,7 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
      */
     protected function getAttributeFactories()
     {
-        return [new AttributeTypeFactory()];
+        return [new AttributeTypeFactory($this->mockConnection())];
     }
 
     /**
@@ -81,7 +92,7 @@ class TranslatedTextAttributeTypeFactoryTest extends AttributeTypeFactoryTest
      */
     public function testCreateTags()
     {
-        $factory   = new AttributeTypeFactory();
+        $factory   = new AttributeTypeFactory($this->mockConnection());
         $values    = [];
         $attribute = $factory->createInstance(
             $values,

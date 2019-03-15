@@ -11,6 +11,7 @@
  * This project is provided in good faith and hope to be usable by anyone.
  *
  * @package    MetaModels/attribute_translatedtext
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Ingolf Steinhardt <info@e-spin.de>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
  * @author     Sven Baumann <baumann.sv@gmail.com>
@@ -19,30 +20,15 @@
  * @filesource
  */
 
-namespace MetaModels\Attribute\TranslatedText;
+namespace MetaModels\AttributeTranslatedTextBundle\EventListener;
 
 use ContaoCommunityAlliance\DcGeneral\Contao\View\Contao2BackendView\Event\GetPropertyOptionsEvent;
-use MetaModels\DcGeneral\Events\BaseSubscriber;
 
 /**
  * Handles event operations on tl_metamodel_dcasetting.
  */
-class BackendSubscriber extends BaseSubscriber
+class RgXpOptionsListener
 {
-    /**
-     * Register all listeners to handle creation of a data container.
-     *
-     * @return void
-     */
-    protected function registerEventsInDispatcher()
-    {
-        $this
-            ->addListener(
-                GetPropertyOptionsEvent::NAME,
-                [$this, 'getRgxpOptions']
-            );
-    }
-
     /**
      * Retrieve the options for the attributes.
      *
