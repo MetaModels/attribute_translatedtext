@@ -3,7 +3,7 @@
 /**
  * This file is part of MetaModels/attribute_translatedtext.
  *
- * (c) 2012-2019 The MetaModels team.
+ * (c) 2012-2020 The MetaModels team.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,7 +15,7 @@
  * @author     Ingolf Steinhardt <info@e-spin.de>
  * @author     Stefan Heimes <stefan_heimes@hotmail.com>
  * @author     Sven Baumann <baumann.sv@gmail.com>
- * @copyright  2012-2019 The MetaModels team.
+ * @copyright  2012-2020 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
@@ -44,14 +44,26 @@ class RgXpOptionsListener
         }
 
         $options = [
-            'alnum'    => 'alnum',
-            'alpha'    => 'alpha',
-            'digit'    => 'digit',
-            'email'    => 'email',
-            'emails'   => 'emails',
-            'extnd'    => 'extnd',
-            'friendly' => 'friendly',
-            'phone'    => 'phone',
+            'digit'       => 'digit',
+            'natural'     => 'natural',
+            'alpha'       => 'alpha',
+            'alnum'       => 'alnum',
+            'extnd'       => 'extnd',
+            'date'        => 'date',
+            'time'        => 'time',
+            'datim'       => 'datim',
+            'friendly'    => 'friendly',
+            'email'       => 'email',
+            'emails'      => 'emails',
+            'url'         => 'url',
+            'alias'       => 'alias',
+            'folderalias' => 'folderalias',
+            'phone'       => 'phone',
+            'prcnt'       => 'prcnt',
+            'locale'      => 'locale',
+            'language'    => 'language',
+            'google+'     => 'google+',
+            'fieldname'   => 'fieldname'
         ];
 
         $event->setOptions($options);
