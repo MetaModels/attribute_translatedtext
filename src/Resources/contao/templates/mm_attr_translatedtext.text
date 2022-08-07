@@ -1,1 +1,1 @@
-<?= $this->raw['value']; ?>
+<?= $this->raw['value'] ?? '' ?>
