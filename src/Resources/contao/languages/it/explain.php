@@ -12,7 +12,7 @@
  * Translations are managed automatically using Transifex. To create a new translation
  * or to help to maintain an existing one, please register at transifex.com.
  *
- * Last-updated: 2022-11-20T13:53:47+01:00
+ * Last-updated: 2022-11-20T13:53:40+01:00
  *
  * @copyright 2012-2022 The MetaModels team.
  * @license   https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
@@ -21,10 +21,8 @@
  */
 
 
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp']['0']             = 'Expression régulière';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp']['1']             = 'Valider le champs à l\'aide d\'une expression régulière';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['alias'] = 'Alias';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['date']  = 'Date';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['datim'] = 'Date et heure';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['url']   = 'URL';
+$GLOBALS['TL_LANG']['XPL']['rgxp']['11']['0'] = 'URL';
+$GLOBALS['TL_LANG']['XPL']['rgxp']['12']['0'] = 'Alias';
+$GLOBALS['TL_LANG']['XPL']['rgxp']['5']['0']  = 'Data';
+$GLOBALS['TL_LANG']['XPL']['rgxp']['7']['0']  = 'Data e ora';
 

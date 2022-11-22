@@ -21,10 +21,8 @@
  */
 
 
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp']['0']             = 'Expression régulière';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp']['1']             = 'Valider le champs à l\'aide d\'une expression régulière';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['alias'] = 'Alias';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['date']  = 'Date';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['datim'] = 'Date et heure';
-$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['url']   = 'URL';
+$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['alias'] = 'Ψευδώνυμο ';
+$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['date']  = 'Ημερομηνια';
+$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['datim'] = 'Ημερομηνια και ωρα';
+$GLOBALS['TL_LANG']['tl_metamodel_dcasetting']['rgxp_options']['url']   = 'Διεύθυνση URL ';
 
