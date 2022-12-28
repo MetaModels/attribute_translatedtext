@@ -39,5 +39,9 @@ class MetaModelsAttributeTranslatedTextExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
+
+        $managedSchemaTypeNames   = $container->getParameter('metamodels.managed-schema-type-names') ?? [];
+        $managedSchemaTypeNames[] = 'translatedtext';
+        $container->setParameter('metamodels.managed-schema-type-names', $managedSchemaTypeNames);
     }
 }
