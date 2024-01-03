@@ -23,6 +23,7 @@
 namespace MetaModels\AttributeTranslatedTextBundle\EventListener;
 
 use ContaoCommunityAlliance\DcGeneral\Contao\View\Contao2BackendView\Event\GetPropertyOptionsEvent;
+use ContaoCommunityAlliance\DcGeneral\DataDefinition\ContainerInterface;
 
 /**
  * Handles event operations on tl_metamodel_dcasetting.
@@ -38,8 +39,13 @@ class RgXpOptionsListener
      */
     public function getRgxpOptions(GetPropertyOptionsEvent $event)
     {
-        if (($event->getEnvironment()->getDataDefinition()->getName() !== 'tl_metamodel_dcasetting')
-            || ($event->getPropertyName() !== 'rgxp')) {
+        $dataDefinition = $event->getEnvironment()->getDataDefinition();
+        assert($dataDefinition instanceof ContainerInterface);
+
+        if (
+            ($dataDefinition->getName() !== 'tl_metamodel_dcasetting')
+            || ($event->getPropertyName() !== 'rgxp')
+        ) {
             return;
         }
 

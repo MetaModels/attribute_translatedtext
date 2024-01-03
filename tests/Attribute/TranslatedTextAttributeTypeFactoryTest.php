@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of MetaModels/attribute_translatedtext.
  *
@@ -52,9 +53,7 @@ class TranslatedTextAttributeTypeFactoryTest extends TestCase
      * Mock a MetaModel.
      *
      * @param string $tableName        The table name.
-     *
      * @param string $language         The language.
-     *
      * @param string $fallbackLanguage The fallback language.
      *
      * @return IMetaModel
