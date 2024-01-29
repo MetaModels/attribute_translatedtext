@@ -3,7 +3,7 @@
 /**
  * This file is part of MetaModels/attribute_translatedtext.
  *
- * (c) 2012-2022 The MetaModels team.
+ * (c) 2012-2024 The MetaModels team.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,7 @@
  * @author     David Molineus <david.molineus@netzmacht.de>
  * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Ingolf Steinhardt <info@e-spin.de>
- * @copyright  2012-2022 The MetaModels team.
+ * @copyright  2012-2024 The MetaModels team.
  * @license    https://github.com/MetaModels/attribute_translatedtext/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
@@ -33,6 +33,8 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
  * This test case test the extension.
  *
  * @covers \MetaModels\AttributeTranslatedTextBundle\DependencyInjection\MetaModelsAttributeTranslatedTextExtension
+ *
+ * @SuppressWarnings(PHPMD.LongClassName)
  */
 class MetaModelsAttributeTranslatedTextExtensionTest extends TestCase
 {
@@ -56,39 +58,20 @@ class MetaModelsAttributeTranslatedTextExtensionTest extends TestCase
      */
     public function testFactoryIsRegistered()
     {
-        $container = $this->getMockBuilder(ContainerBuilder::class)->getMock();
-
-        $container
-            ->expects($this->exactly(2))
-            ->method('setDefinition')
-            ->withConsecutive(
-                ['metamodels.attribute_translatedtext.factory',
-                $this->callback(
-                    function ($value) {
-                        /** @var Definition $value */
-                        $this->assertInstanceOf(Definition::class, $value);
-                        $this->assertEquals(AttributeTypeFactory::class, $value->getClass());
-                        $this->assertCount(1, $value->getTag('metamodels.attribute_factory'));
-
-                        return true;
-                    }
-                )],
-                [RgXpOptionsListener::class,
-                $this->callback(
-                    function ($value) {
-                        /** @var Definition $value */
-                        $this->assertInstanceOf(Definition::class, $value);
-                        $this->assertCount(1, $tags = $value->getTag('kernel.event_listener'));
-                        $this->assertCount(2, $tags[0]);
-                        $this->assertSame('dc-general.view.contao2backend.get-property-options', $tags[0]['event']);
-                        $this->assertSame('getRgxpOptions', $tags[0]['method']);
-
-                        return true;
-                    }
-                )]
-            );
+        $container = new ContainerBuilder();
 
         $extension = new MetaModelsAttributeTranslatedTextExtension();
         $extension->load([], $container);
+
+        self::assertTrue($container->hasDefinition('metamodels.attribute_translatedtext.factory'));
+        $definition = $container->getDefinition('metamodels.attribute_translatedtext.factory');
+        self::assertCount(1, $definition->getTag('metamodels.attribute_factory'));
+
+        self::assertTrue($container->hasDefinition(RgXpOptionsListener::class));
+        $definition = $container->getDefinition(RgXpOptionsListener::class);
+        self::assertCount(1, $tags = $definition->getTag('kernel.event_listener'));
+        self::assertCount(2, $tags[0]);
+        self::assertSame('dc-general.view.contao2backend.get-property-options', $tags[0]['event']);
+        self::assertSame('getRgxpOptions', $tags[0]['method']);
     }
 }
