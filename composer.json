@@ -36,7 +36,7 @@
     "contao-community-alliance/dc-general": "^2.3",
     "contao/core-bundle": "^4.13.0 <5.0",
     "metamodels/attribute_text": "^2.3@dev",
-    "metamodels/core": "^2.3@dev",
+    "metamodels/core": "dev-feature/phpcq-2 as 2.3.0",
     "symfony/dependency-injection": "^5.4",
     "symfony/http-kernel": "^5.4"
   },
