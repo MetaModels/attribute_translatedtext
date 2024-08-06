@@ -28,7 +28,6 @@
     "email": "mail@metamodel.me",
     "issues": "https://github.com/MetaModels/attribute_translatedtext/issues",
     "wiki": "https://de.contaowiki.org/MetaModels",
-    "irc": "irc://irc.freenode.org/contao.mm",
     "source": "https://github.com/MetaModels/attribute_translatedtext"
   },
   "require": {
@@ -45,12 +44,6 @@
     "menatwork/contao-multicolumnwizard-bundle": "^3.4",
     "phpcq/runner-bootstrap": "^1.0@dev"
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.cyberspectrum.de/r"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "MetaModels\\AttributeTranslatedTextBundle\\": "src"
