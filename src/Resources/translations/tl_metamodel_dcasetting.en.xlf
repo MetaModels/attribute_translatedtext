@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="src/Resources/translations/tl_metamodel_dcasetting.en.xlf">
+    <body>
+      <trans-unit id="rgxp.label" resname="rgxp.label">
+        <source>Regular expression</source>
+      </trans-unit>
+      <trans-unit id="rgxp.description" resname="rgxp.description">
+        <source>Validates the field against a regular expression.</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.digit" resname="rgxp_options.digit">
+        <source>Numeric characters</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.natural" resname="rgxp_options.natural">
+        <source>Non-negative natural numbers</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.alpha" resname="rgxp_options.alpha">
+        <source>Alphabetic characters</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.alnum" resname="rgxp_options.alnum">
+        <source>Alphanumeric characters</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.extnd" resname="rgxp_options.extnd">
+        <source>Extend special characters</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.date" resname="rgxp_options.date">
+        <source>Date</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.time" resname="rgxp_options.time">
+        <source>Time</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.datim" resname="rgxp_options.datim">
+        <source>Date and time</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.friendly" resname="rgxp_options.friendly">
+        <source>Friendly email</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.email" resname="rgxp_options.email">
+        <source>Email</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.emails" resname="rgxp_options.emails">
+        <source>Emails</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.url" resname="rgxp_options.url">
+        <source>URL</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.alias" resname="rgxp_options.alias">
+        <source>Alias</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.folderalias" resname="rgxp_options.folderalias">
+        <source>Folder alias</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.phone" resname="rgxp_options.phone">
+        <source>Phone</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.prcnt" resname="rgxp_options.prcnt">
+        <source>Percent value</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.locale" resname="rgxp_options.locale">
+        <source>Locale key</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.language" resname="rgxp_options.language">
+        <source>Language key</source>
+      </trans-unit>
+      <trans-unit id="rgxp_options.fieldname" resname="rgxp_options.fieldname">
+        <source>Fieldname</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
